@@ -59,14 +59,14 @@ def sliding_windows(array):
     largest_product = 0
 
     #loop through arrays and find product of all the sliding windows in series
-    for arr in array:
-        for i in range(len(array)):
-            if arr[i+3][i+3] == True and arr[i+3][i] == True and arr[i][i+3] == True:
+    for i in range(17):
+        for j in range(17):
+            if (array[i+3]) and (array[i][j+3]):
                 # define the 4 available directional windows
-                vertical_product = arr[i][i] * arr[i+1][i] * arr[i+2][i] * arr[i+3][i]
-                horizontal_product = arr[i][i] * arr[i][i+1] * arr[i][i+2] * arr[i][i+3]
-                left_diag_product = arr[i][i] * arr[i+1][i+1] * arr[i+2][i+2] * arr[i+3][i+3]
-                right_diag_product = arr[i][i+3] * arr[i+1][i+2] * arr[i+2][i+1] * arr[i+3][i]
+                vertical_product = array[i][j] * array[i+1][j] * array[i+2][j] * array[i+3][j]
+                horizontal_product = array[i][j] * array[i][j+1] * array[i][j+2] * array[i][j+3]
+                left_diag_product = array[i][j] * array[i+1][j+1] * array[i+2][j+2] * array[i+3][j+3]
+                right_diag_product = array[i][j+3] * array[i+1][j+2] * array[i+2][j+1] * array[i+3][j]
                 #evaluate each product against the largest so far.
                 for product in [vertical_product,horizontal_product,left_diag_product,right_diag_product]:
                     if product > largest_product:
@@ -74,4 +74,4 @@ def sliding_windows(array):
 
     return largest_product
 
-print(f"sliding_windows(arr)")
+print(f"{sliding_windows(arr)}")
